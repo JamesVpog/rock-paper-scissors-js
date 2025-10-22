@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
 	return Math.floor(Math.random() * 3);
 }
@@ -30,4 +33,14 @@ function playRound(human, computer, computerScore, humanScore) {
 	}
 	return { humanScore, computerScore };
 }
+
+function handleClick(e) {
+	// use the target id as the player's choice (0 is rock, 1 is paper, 2 is scissors)
+	playRound(e.target.id, getComputerChoice(), computerScore, humanScore);
+}
+
+const btns = document.querySelectorAll("button");
+btns.forEach((button) => {
+	button.addEventListener("click", handleClick);
+})
 
