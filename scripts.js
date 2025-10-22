@@ -32,7 +32,7 @@ function playRound(human, computer, computerScore, humanScore) {
 		li.textContent = ("You lose! Rock beats scissors");
 		computerScore++;
 	} else if (human == 2 && computer == 1) {
-		li.textContent = ("You win. Scissors beats paper");
+		li.textContent = ("You win! Scissors beats paper");
 		humanScore++;
 	}
 	li.textContent = li.textContent + " Player: " + humanScore + " Computer: " + computerScore;
@@ -42,7 +42,28 @@ function playRound(human, computer, computerScore, humanScore) {
 
 function handleClick(e) {
 	// use the target id as the player's choice (0 is rock, 1 is paper, 2 is scissors)
-	playRound(e.target.id, getComputerChoice(), computerScore, humanScore);
+
+	const result = playRound(e.target.id, getComputerChoice(), computerScore, humanScore);
+	humanScore = result.humanScore;
+	computerScore = result.computerScore
+	const btns = document.querySelectorAll("button");
+
+	if (humanScore >= 5 || computerScore >= 5) {
+		btns.forEach((btn) => btn.disabled = true);
+	}
+	if (humanScore >= 5) {
+		const p = document.createElement("p");
+		const gameDiv = document.querySelector(".game");
+		p.textContent = "You win!"
+		gameDiv.appendChild(p);
+
+	} else if (computerScore >= 5) {
+
+		const p = document.createElement("p");
+		const gameDiv = document.querySelector(".game");
+		p.textContent = "You lose!"
+		gameDiv.appendChild(p);
+	}
 }
 
 const btns = document.querySelectorAll("button");
