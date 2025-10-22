@@ -30,20 +30,4 @@ function playRound(human, computer, computerScore, humanScore) {
 	}
 	return { humanScore, computerScore };
 }
-function playGame(rounds, h, c) {
 
-	for (let i = 0; i < rounds; i++) {
-		let c_choice = getComputerChoice();
-		let h_choice = getHumanChoice();
-		({ humanScore: h, computerScore: c } = playRound(h_choice, c_choice, c, h));
-		console.log("Current scores\n: human: " + h + " computer: " + c);
-	}
-	if (h > c) {
-		return "Human is winner";
-	} else if (c > h) {
-		return "Computer is winner";
-	} else {
-		return "Tie";
-	}
-}
-console.log(playGame(5, 0, 0));
