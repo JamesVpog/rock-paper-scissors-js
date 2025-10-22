@@ -10,27 +10,33 @@ function getHumanChoice() {
 }
 
 function playRound(human, computer, computerScore, humanScore) {
+
+	const ul = document.querySelector("ul");
+	const li = document.createElement("li");
+
 	if (human == computer) {
-		console.log("Tie!")
+		li.textContent = ("Tie!")
 	} else if (human == 0 && computer == 1) {
-		console.log("You lose! Paper beats rock");
+		li.textContent = ("You lose! Paper beats rock");
 		computerScore++;
 	} else if (human == 0 && computer == 2) {
-		console.log("You win! Rock beats scissors");
+		li.textContent = ("You win! Rock beats scissors");
 		humanScore++;
 	} else if (human == 1 && computer == 0) {
-		console.log("You win! Paper beats rock");
+		li.textContent = ("You win! Paper beats rock");
 		humanScore++;
 	} else if (human == 1 && computer == 2) {
-		console.log("You lose! Scissors beats paper");
+		li.textContent = ("You lose! Scissors beats paper");
 		computerScore++;
 	} else if (human == 2 && computer == 0) {
-		console.log("You lose! Rock beats scissors");
+		li.textContent = ("You lose! Rock beats scissors");
 		computerScore++;
 	} else if (human == 2 && computer == 1) {
-		console.log("You win. Scissors beats paper");
+		li.textContent = ("You win. Scissors beats paper");
 		humanScore++;
 	}
+	li.textContent = li.textContent + " Player: " + humanScore + " Computer: " + computerScore;
+	ul.appendChild(li);
 	return { humanScore, computerScore };
 }
 
